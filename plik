@@ -1,0 +1,250 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: const MyHomePage(title: 'Button Checker'));
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
+
+  void _doubleCounter() {
+    setState(() {
+      _counter = _counter * 2;
+    });
+  }
+
+  void _unDoubleCounter() {
+    setState(() {
+      _counter = _counter ~/ 2;
+    });
+  }
+
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 15, 104, 177),
+      appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[
+                  Colors.yellow,
+                  Colors.orange,
+                  Colors.red,
+                ])),
+          ),
+          title: Container(
+            alignment: Alignment.center,
+            child: Text(
+              widget.title,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  color: Colors.black),
+            ),
+          )),
+      body: Center(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: SizedBox(
+                      width: MediaQuery.of(context).size.width * .7,
+                      height: MediaQuery.of(context).size.height * .1,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: StadiumBorder(),
+                            backgroundColor:
+                                const Color.fromARGB(255, 209, 115, 147)),
+                        onPressed: _incrementCounter,
+                        child: Text(
+                          "Click",
+                          style: TextStyle(color: Colors.black, fontSize: 34),
+                        ),
+                      )),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Text(
+                    "+1",
+                    style: TextStyle(
+                        color: const Color.fromARGB(255, 209, 115, 147),
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Text(
+                    "-1",
+                    style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: SizedBox(
+                      width: MediaQuery.of(context).size.width * .7,
+                      height: MediaQuery.of(context).size.height * .1,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: StadiumBorder(),
+                            backgroundColor: Colors.green),
+                        onPressed: _decrementCounter,
+                        child: Text(
+                          "Naciśnij",
+                          style: TextStyle(color: Colors.black, fontSize: 34),
+                        ),
+                      )),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: SizedBox(
+                      width: MediaQuery.of(context).size.width * .7,
+                      height: MediaQuery.of(context).size.height * .1,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            side: BorderSide(
+                              width: 5.0,
+                              color: Colors.red,
+                            ),
+                            backgroundColor: Colors.yellow),
+                        onPressed: _doubleCounter,
+                        child: Text(
+                          "Wciśnij",
+                          style: TextStyle(color: Colors.black, fontSize: 34),
+                        ),
+                      )),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Text(
+                    "x2",
+                    style: TextStyle(
+                        color: Colors.yellow,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text(
+                    "/2",
+                    style: TextStyle(
+                        color: Colors.yellow,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: SizedBox(
+                      width: MediaQuery.of(context).size.width * .7,
+                      height: MediaQuery.of(context).size.height * .1,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: StadiumBorder(),
+                          backgroundColor: Colors.yellow,
+                          side: BorderSide(
+                            width: 5.0,
+                            color: Colors.green,
+                          ),
+                        ),
+                        onPressed: _unDoubleCounter,
+                        child: Text(
+                          "Ciśnij",
+                          style: TextStyle(color: Colors.black, fontSize: 34),
+                        ),
+                      )),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              width: MediaQuery.of(context).size.width * 0.7,
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(
+                      15), // Example of uniform border radius
+                ),
+                width: MediaQuery.of(context).size.width * 0.6,
+                height: MediaQuery.of(context).size.height * 0.2,
+                child: Text(
+                  '$_counter',
+                  style: TextStyle(fontSize: 60),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.pink,
+        onPressed: _resetCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.refresh, color: Colors.grey),
+      ),
+    );
+  }
+}
